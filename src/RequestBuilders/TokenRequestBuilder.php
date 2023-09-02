@@ -9,15 +9,13 @@ class TokenRequestBuilder extends BaseRequestBuilder
     protected string $merchantCode;
     private string $signature;
 
-    public function __construct(
-        private string $cardNumber, private string $expiryYear,
-        private string $expiryMonth, private string $cvv, private Model $user,
-    ) {}
+    private string $cardNumber;
+    private string $expiryYear;
+    private string $expiryMonth;
+    private string $cvv;
+    private Model $user;
 
-    public static function make(string $cardNumber, string $expiryYear, string $expiryMonth, string $cvv, Model $user): static
-    {
-        return new static($cardNumber, $expiryYear, $expiryMonth, $cvv, $user);
-    }
+    public function __construct() {}
 
     public function setSignature(string $signature): self
     {
@@ -41,8 +39,37 @@ class TokenRequestBuilder extends BaseRequestBuilder
             "customerEmail"     => $this->user->email,
             "cardNumber"        => $this->cardNumber,
             "expiryYear"        => $this->expiryYear,
-            "expiryMonth"       => $this->expiryYear,
             "cvv"               => $this->cvv,
         ];
+    }
+
+    public function setCardNumber(string $cardNumber): static
+    {
+        $this->cardNumber = $cardNumber;
+        return $this;
+    }
+
+    public function setExpiryYear(string $expiryYear): static
+    {
+        $this->expiryYear = $expiryYear;
+        return $this;
+    }
+
+    public function setExpiryMonth(string $expiryMonth): static
+    {
+        $this->expiryMonth = $expiryMonth;
+        return $this;
+    }
+
+    public function setCvv(string $cvv): static
+    {
+        $this->cvv = $cvv;
+        return $this;
+    }
+
+    public function setUser(Model $user): static
+    {
+        $this->user = $user;
+        return $this;
     }
 }

@@ -35,7 +35,12 @@ class FawryClient
 
     public function createCardToken($cardNumber, $expiryYear, $expiryMonth, $cvv, $user): static
     {
-        $this->requestBuilder = TokenRequestBuilder::make($cardNumber, $expiryYear, $expiryMonth, $cvv, $user)
+        $this->requestBuilder = TokenRequestBuilder::make()
+            ->setCardNumber($cardNumber)
+            ->setExpiryMonth($expiryMonth)
+            ->setExpiryYear($expiryYear)
+            ->setCvv($cvv)
+            ->setUser($user)
             ->setSignature($this->generateSignature($user->id))
             ->setMerchantCode($this->merchantCode);
 
