@@ -27,7 +27,7 @@ class FawryServiceProvider extends ServiceProvider
         $this->configure();
 
         $this->app->bind('fawry',function(){
-            return new Fawry();
+            return new Fawry1();
         });
     }
 
