@@ -10,8 +10,8 @@ use Maherelgamil\LaravelFawry\Responses\TokenResponse;
 
 class FawryClient
 {
-    const DEVELOPMENT_URL = 'https://api.merchant.geidea.net';
-    const PRODUCTION_URL = 'https://api.merchant.geidea.net';
+    const DEVELOPMENT_URL = 'https://atfawry.fawrystaging.com/ECommerceWeb/Fawry';
+    const PRODUCTION_URL = 'https://www.atfawry.com/ECommerceWeb/Fawry';
     public PendingRequest $client;
     private BaseRequestBuilder $requestBuilder;
     private BaseResponse $response;
